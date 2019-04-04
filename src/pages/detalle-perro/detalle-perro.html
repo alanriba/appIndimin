@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar color='primary'>Detalle Mascotas</ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+    <ion-card>
+        <img [src]="perro.dogImagen" />
+        <div class="card-title">{{ perro.dogRaza }}</div>
+        <div class="card-subtitle">Sub Razas Adicionales {{ razas.length }}</div>
+
+        <ion-fab right bottom (click)=verGaleria(perro)>
+            <button ion-fab color="secondary"><ion-icon name="images" ></ion-icon></button>
+        </ion-fab>
+    </ion-card>
+
+    <ion-list>
+        <ion-list-header>
+            Sub Razas
+        </ion-list-header>
+        <ion-item *ngFor="let item of razas">{{ item }}</ion-item>
+    </ion-list>
+</ion-content>

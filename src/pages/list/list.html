@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>List</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-toolbar>
+        <ion-searchbar (ionInput)="filtrarPerro($event)"></ion-searchbar>
+    </ion-toolbar>
+    <ion-list>
+        <ion-item *ngFor="let item of objListPerro[0]">
+            <ion-thumbnail item-start>
+                <img [src]="item.dogImagen">
+            </ion-thumbnail>
+            <ion-label item-content>
+                {{item.dogRaza }}
+            </ion-label>
+            <button ion-button clear item-end (click)="verDetalle(item)">Ver</button>
+        </ion-item>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="siguientePagina($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

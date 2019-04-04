@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-slides pager (ionSlideDidChange)="slideChanged()"
+    (ionSlideDrag)="slideMoved()">
+    <ion-slide>
+      <div class="diag" style="background: url('assets/imgs/whitebg.svg') no-repeat">
+        <img src="assets/imgs/slices/pawprint.svg" alt="searchAnimals" class="ion-icon" style="width: 150px; height: 150px;" [@bounce]="state">
+      </div>
+      <div [@bounce]="state">
+        <h2>Busca tu máscota preferida</h2>
+        <p>Ya sea se Perros o Gatos, puedes obtener información en nuestra APP</p>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="diag" style="background: url('assets/imgs/whitebg.svg') no-repeat" >
+        <img src="assets/imgs/slices/dog.svg" alt="perros" class="ion-icon" style="width: 150px; height: 150px;" [@bounce]="state">
+      </div>
+      <div [@bounce]="state">
+        <h2>Perros</h2>
+        <p>
+          El perro, ​​​ llamado perro doméstico o can, ​ y coloquialmente kiltro, Cholito o Chuleta, ​y también choco;​ Es considerado el mejor amigo del hombre. Busca el tuyo
+        </p>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="diag" style="background: url('assets/imgs/whitebg.svg') no-repeat">
+        <img src="assets/imgs/slices/cat.svg" alt="gatos" class="ion-icon" style="width: 200px; height: 200px;" [@bounce]="state">
+      </div>
+      <div [@bounce]="state">
+        <h2>Gatos</h2>
+        <p>El gato doméstico​​, llamado simplemente gato, minino, ​ michino, ​ micho, ​ mizo, ​ miz, ​ morroño​ o morrongo​, entre otros nombres coloquiales. Siempre el divertido animal</p>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <button (click)="skip()" id="skip">{{ skipMsg }}</button>
+</ion-content>
