@@ -2,6 +2,8 @@
 Aplicativo Mobile para mascotas
 
 #instalacion
+npm install
+
 
 
 # Cumplimiento de Objetivos
