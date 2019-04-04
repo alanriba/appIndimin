@@ -16,12 +16,12 @@ import { AnimalProvider } from "../providers/animal/animal";
 import { HttpClientModule } from "@angular/common/http";
 import { AppConfiguracionService } from "../providers/configuracion/app-configuracion";
 
-import { PhotoViewer } from '@ionic-native/photo-viewer';
-
 //Storage
 import { IonicStorageModule } from "@ionic/storage";
 import { DetallePerroPage } from "../pages/detalle-perro/detalle-perro";
 import { GaleriaPage } from "../pages/galeria/galeria";
+
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 @NgModule({
   declarations: [MyApp, HomePage, ListPage, MainPage, DetallePerroPage, GaleriaPage],
@@ -36,11 +36,11 @@ import { GaleriaPage } from "../pages/galeria/galeria";
   entryComponents: [MyApp, HomePage, ListPage, MainPage, DetallePerroPage, GaleriaPage],
   providers: [
     StatusBar,
-    PhotoViewer,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AnimalProvider,
-    AppConfiguracionService
+    AppConfiguracionService,
+    PhotoViewer
   ]
 })
 export class AppModule {}

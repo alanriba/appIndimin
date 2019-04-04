@@ -1,14 +1,7 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { AnimalProvider } from "../../providers/animal/animal";
-import { PhotoViewer } from "@ionic-native/photo-viewer/ngx";
-
-/**
- * Generated class for the GaleriaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { PhotoViewer } from "@ionic-native/photo-viewer";
 
 @IonicPage()
 @Component({
@@ -53,13 +46,11 @@ export class GaleriaPage {
     }
     console.log( nuevoArreglo );
     return nuevoArreglo;
-
   }
 
   showImagen(item: any) {
     console.log('item', item);
 
-    this.photoViewer.show(item, '',{share: false});
-    
+    this.photoViewer.show(item);
   }
 }
