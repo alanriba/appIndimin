@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, List } from 'ionic-angular';
-import { DetallePerroPage } from '../detalle-perro/detalle-perro';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ListPage } from '../list/list';
 
 @IonicPage()

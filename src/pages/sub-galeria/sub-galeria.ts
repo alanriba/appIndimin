@@ -1,15 +1,18 @@
-import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { AnimalProvider } from "../../providers/animal/animal";
-import { PhotoViewer } from "@ionic-native/photo-viewer";
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AnimalProvider } from '../../providers/animal/animal';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 @IonicPage()
 @Component({
-  selector: "page-galeria",
-  templateUrl: "galeria.html"
+  selector: 'page-sub-galeria',
+  templateUrl: 'sub-galeria.html',
 })
-export class GaleriaPage {
+export class SubGaleriaPage {
+
   perro: any = {};
+  nomRaza: string='';
+  subRaza: string='';
 
   arrayGaleria: any[] = [];
   titleGaleria: string = "";
@@ -20,15 +23,17 @@ export class GaleriaPage {
     public navParams: NavParams,
     private photoViewer: PhotoViewer
   ) {
-    this.perro = this.navParams.get("dogRaza");
-    this.titleGaleria = this.perro.dogRaza;
+    this.nomRaza = this.navParams.data[0].dogRaza;
+    this.subRaza = this.navParams.data[1].subRaza;
+    this.titleGaleria = this.perro.dogRaza + 'y la Sub Raza'+ this.perro.subRaza;
   }
 
   ionViewDidLoad() {
-    console.log(this.navParams.get("dogRaza"));
-    console.log(this.navParams.get("SubRaza"));
+    console.log('this.perro', this.nomRaza);
+    console.log('this.perro', this.subRaza);
+    
 
-    this._animal.obterGaleria(this.perro.dogRaza).then((resp: any) => {
+    this._animal.obterGaleriaSubRaza(this.nomRaza, this.subRaza).then((resp: any) => {
       for (let valor of resp.message) {
         this.arrayGaleria.push(valor);
       }

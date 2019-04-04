@@ -3,7 +3,6 @@ import { NavController, NavParams, LoadingController } from "ionic-angular";
 import { PerroModel } from "../../interfaces/perro/perro.model";
 import { AnimalProvider } from "../../providers/animal/animal";
 import { DetallePerroPage } from "../detalle-perro/detalle-perro";
-import { _ParseAST } from "@angular/compiler";
 
 @Component({
   selector: "page-list",
@@ -12,6 +11,12 @@ import { _ParseAST } from "@angular/compiler";
 export class ListPage {
   objListPerro: PerroModel[] = [];
   objList: PerroModel[] = [];
+  objLista: any = [];
+  count: number = 0;
+
+  regtoDesde: number = 0;
+  totalReg: number = 0;
+  totalPag: number = 0;
 
   constructor(
     public navCtrl: NavController,
@@ -26,13 +31,26 @@ export class ListPage {
 
   cargarPerros() {
     this.objListPerro = null;
+
     let promesa = new Promise(resolve => {
       this._animal.obterRazaPerrosAll().then((resp: any) => {
         this.objList = resp;
-        this.objListPerro = this.objList.sort((a, b) =>
-          a.dogRaza.localeCompare(b.dogRaza)
-        );
+
+        let loading = this.loadingCtrl.create({
+          spinner: "Crescent",
+          content: "Cargando, un momento..."
+        });
+
+        loading.present();
+
+        setTimeout(() => {
+          loading.dismiss();
+          this.objListPerro = this.objList.sort((a, b) =>
+            a.dogRaza.localeCompare(b.dogRaza)
+          );
+        }, 1000);
       });
+
       resolve();
     });
     return promesa;
@@ -58,9 +76,7 @@ export class ListPage {
 
   siguientePagina(infiniteScroll) {
     setTimeout(() => {
-      this._animal.obterRazaPerrosAll().then(() => {
-        infiniteScroll.complete();
-      });
+      infiniteScroll.complete();
     }, 500);
   }
 

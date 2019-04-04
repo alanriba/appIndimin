@@ -5,16 +5,11 @@ import {
   NavParams,
   LoadingController
 } from "ionic-angular";
-import { PerroModel } from "../../interfaces/perro/perro.model";
 import { AnimalProvider } from "../../providers/animal/animal";
 import { GaleriaPage } from "../galeria/galeria";
+import { SubGaleriaPage } from "../sub-galeria/sub-galeria";
 
-/**
- * Generated class for the DetallePerroPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -55,6 +50,24 @@ export class DetallePerroPage {
 
     setTimeout(() => {
       this.navCtrl.push(GaleriaPage, { dogRaza: item });
+    }, 1000);
+
+    setTimeout(() => {
+      loading.dismiss();
+    }, 1000);
+  }
+
+  verGaleriaSubRaza(item: any) {
+    console.log(item);
+    let loading = this.loadingCtrl.create({
+      spinner: "Crescent",
+      content: "Cargando, un momento..."
+    });
+
+    loading.present();
+
+    setTimeout(() => {
+      this.navCtrl.push(SubGaleriaPage, [{ dogRaza: this.perro.dogRaza}, {subRaza: item}]);
     }, 1000);
 
     setTimeout(() => {

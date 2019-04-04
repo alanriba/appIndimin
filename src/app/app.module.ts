@@ -22,9 +22,10 @@ import { DetallePerroPage } from "../pages/detalle-perro/detalle-perro";
 import { GaleriaPage } from "../pages/galeria/galeria";
 
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { SubGaleriaPage } from "../pages/sub-galeria/sub-galeria";
 
 @NgModule({
-  declarations: [MyApp, HomePage, ListPage, MainPage, DetallePerroPage, GaleriaPage],
+  declarations: [MyApp, HomePage, ListPage, MainPage, DetallePerroPage, GaleriaPage, SubGaleriaPage],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -33,7 +34,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer';
     BrowserAnimationsModule
   ],
   bootstrap: [IonicApp],
-  entryComponents: [MyApp, HomePage, ListPage, MainPage, DetallePerroPage, GaleriaPage],
+  entryComponents: [MyApp, HomePage, ListPage, MainPage, DetallePerroPage, GaleriaPage, SubGaleriaPage],
   providers: [
     StatusBar,
     SplashScreen,

@@ -3,7 +3,6 @@ import { Injectable } from "@angular/core";
 import { Platform } from "ionic-angular";
 import { Global } from "../../shared/global";
 import { PerroModel } from "../../interfaces/perro/perro.model";
-import { SubRazaPerro } from "../../interfaces/perro/perro_subraza.model";
 import { AppConfiguracionService } from "../configuracion/app-configuracion";
 
 @Injectable()
@@ -23,17 +22,14 @@ export class AnimalProvider {
     }
   }
 
-  // método para obtener la información de la cédula
+  // método para obtener la informacion de los perros
   public obterRazaPerrosAll() {
-   
     let promesa = new Promise((resolve, reject) => {
-      this.perroArray = [];
       this._http
         .get(`${Global.BASE_ENDPOINT_LIST_RAZA_ALL}`)
         .subscribe((resp: any) => {
+           this.perroArray = [];
            for (let a in resp.message) {
-            // this.obtenerImagen(a.toString());
-
             this._http.get(`${Global.BASE_ENDPOINT_DOG_IMG}` + a.toString() + `/images/random`)
                       .subscribe((img: any) => {
                   if (img.message != "") {
@@ -51,7 +47,7 @@ export class AnimalProvider {
   }
 
   public obtenerImagen(nomRaza: string) {
-    let promesa = new Promise((resolve, reject) => {
+    let promesa = new Promise((resolve) => {
       return this._http
         .get(`${Global.BASE_ENDPOINT_DOG_IMG}` + nomRaza + `/images/random`)
         .subscribe((resp: any) => {
@@ -71,6 +67,19 @@ export class AnimalProvider {
     let promesa = new Promise((resolve, reject) => {
       this._http
         .get(`${Global.BASE_ENDPOINT_LIST_SUB_RAZA_ALL}`+ raza+'/list')
+        .subscribe((resp: any) => {
+          resolve(resp);
+        });
+    });
+    return promesa;
+  }
+
+  public obterGaleriaSubRaza(raza: string, subRaza: string) {
+
+    console.log('url', `${Global.BASE_ENDPOINT_LIST_SUB_RAZA_IMG}`+ raza +'/' + subRaza + '/images');
+    let promesa = new Promise((resolve, reject) => {
+      this._http
+        .get(`${Global.BASE_ENDPOINT_LIST_SUB_RAZA_IMG}`+ raza+'/' + subRaza+ '/images')
         .subscribe((resp: any) => {
           resolve(resp);
         });
