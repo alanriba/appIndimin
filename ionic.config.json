@@ -9,5 +9,6 @@
       "path": "/api",
       "proxyUrl": "https://dog.ceo/"
     }
-  ]
+  ],
+  "app_id": ""
 }
