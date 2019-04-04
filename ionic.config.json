@@ -1,12 +1,13 @@
 {
-    "name": "addpIndimin",
-    "app_id": "",
-    "type": "ionic-angular",
-    "integrations": {
-        "cordova": {}
-    },
-    "proxies": [{
-        "path": "/api",
-        "proxyUrl": "https://dog.ceo/"
-    }]
+  "name": "addpIndimin",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://dog.ceo/"
+    }
+  ]
 }
