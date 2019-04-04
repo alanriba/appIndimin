@@ -12,7 +12,7 @@
         <ion-searchbar (ionInput)="filtrarPerro($event)"></ion-searchbar>
     </ion-toolbar>
     <ion-list>
-        <ion-item *ngFor="let item of objListPerro[0]">
+        <ion-item *ngFor="let item of objListPerro">
             <ion-thumbnail item-start>
                 <img [src]="item.dogImagen">
             </ion-thumbnail>

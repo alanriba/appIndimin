@@ -9,7 +9,7 @@ import { AppConfiguracionService } from "../configuracion/app-configuracion";
 @Injectable()
 export class AnimalProvider {
   urlServiceDog = "";
-  perroArray: PerroModel[] = [];
+  perroArray: any[] = [];
 
   constructor(
     private _http: HttpClient,
@@ -25,14 +25,26 @@ export class AnimalProvider {
 
   // método para obtener la información de la cédula
   public obterRazaPerrosAll() {
+   
     let promesa = new Promise((resolve, reject) => {
+      this.perroArray = [];
       this._http
         .get(`${Global.BASE_ENDPOINT_LIST_RAZA_ALL}`)
         .subscribe((resp: any) => {
            for (let a in resp.message) {
-            this.obtenerImagen(a.toString());
-          } 
-          resolve(this.perroArray);
+            // this.obtenerImagen(a.toString());
+
+            this._http.get(`${Global.BASE_ENDPOINT_DOG_IMG}` + a.toString() + `/images/random`)
+                      .subscribe((img: any) => {
+                  if (img.message != "") {
+                     let perro: PerroModel = new PerroModel();
+                      perro.dogRaza = a.toString();
+                      perro.dogImagen = img.message; 
+                    this.perroArray.push(perro);
+                  } 
+                });
+              }
+              resolve(this.perroArray);
         });
     });
     return promesa;
